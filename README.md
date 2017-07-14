@@ -1,5 +1,5 @@
 # Vide
-**Vide** is a **free and open-source** tool for **Serial Communication Reading** and **Data Visualization**. 
+**Vide** is a **free** and **open-source** tool for **Serial Communication Reading** and **Data Visualization**. 
 
 Its purpose is to get _Input_ from a **Serial device** and generate an output for the **Plot Graphs** of the Application.
 
