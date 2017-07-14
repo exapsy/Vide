@@ -22,9 +22,10 @@ Something that could read many **Live Serial Data** and **Saved Data** simultane
 ---------
 ## Abilities
 
-* **Vide** is intended to be **Multi-Threaded** to provide a much **faster** and **cleaner** use to the **Final User**. 
-* It provides the ability to visualize each Variable in the plot of your preference. You can either visualize all the variables in one and only plot **OR** all the variables in their own plot.
-* Can read Live Data
+* - [x] Can read Live Data
 * - [ ] Can read Saved **.csv** Data.
+* - [ ] **Vide** is intended to be **Multi-Threaded** to provide a much **faster** and **cleaner** use to the **Final User**. 
+* - [ ] It provides the ability to visualize each Variable in the plot of your preference. You can either visualize all the variables in one and only plot **OR** all the variables in their own plot.
+* - [ ] Can read many **Serial Ports** together
 ---------
 ### I hope this products gets the love it needs.
