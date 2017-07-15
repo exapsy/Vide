@@ -27,7 +27,7 @@ void SerialDataManager::getUnfinishedValue( )
 
 void SerialDataManager::readBytes()
 {
-    qDebug() << getIntData( ) << endl;
+    qDebug() << getMappedDoubles() << endl;
 }
 
 // Pure Variables in Serial without Titles
@@ -108,17 +108,65 @@ QVector<QVector<QString> > SerialDataManager::getStringData( )
     return getStringData( this->data );
 }
 
+QStringList SerialDataManager::getVarNames(const QByteArray &array)
+{
+    QStringList varNames;
+    int varIndex = 0;
+    QVector<QVector<QString>> stringGroups = getStringData ( array );
+
+    // For each Serial Input ( Input = Ends with '\r' )
+    foreach ( QVector<QString> group, stringGroups ) {
+        // Passing through all the elements in the group
+        for ( int i = 0; i < group.size(); i++ ) {
+            // A varName is defined before a colon
+            // after the colon is located the Double value
+            if ( !( group[ i ].endsWith( ':' ) ) ) {
+                varNames[ varIndex ] += group[ i ];
+            }
+            else {
+                varNames[ varIndex ] += group[ i ];
+                varIndex++; // Next variable name to read
+                i++; // Bypassing the numerical (double) value on the right
+            }
+        }
+    }
+
+    return varNames;
+}
+
+QStringList SerialDataManager::getVarNames()
+{
+    return getVarNames ( data );
+}
+
+QVector<double> SerialDataManager::getVarValues(const QByteArray &array)
+{
+    QVector<double> varValues;
+    QVector<QVector<QString>> stringGroups = getStringData ( array );
+
+
+    return varValues;
+}
+
+QVector<double> SerialDataManager::getVarValues()
+{
+    return getVarValues ( data );
+}
+
 
 // Get mapped data
 QMap<QString, double> SerialDataManager::getMappedDoubles( const QByteArray &data )
 {
     QMap<QString, double> mappedDoubles;
-    QVector<QVector<QString>> stringData = getStringData ( data );
+    QStringList varNames = getVarNames( data );
+    QVector<double> varValues = getVarValues( data );
 
-    for ( QVector<QString> group : stringData ) {
-        for ( int i = 0; i < group.size(); i+=2 ) {
-            mappedDoubles[group[i]] = group[i+1].toDouble();
-        }
+    // TODO: Search/Implement a better Exception throwing, something that gives the user a message
+    if (varNames.size() != varValues.size() )
+        throw new QException( );
+
+    for ( int i = 0; i < varNames.size(); i++ ) {
+        mappedDoubles[ varNames[ i ] ] = varValues[ i ];
     }
 
     return mappedDoubles;
@@ -132,7 +180,7 @@ QMap<QString, double> SerialDataManager::getMappedDoubles( )
 QMap<QString, int> SerialDataManager::getMappedIntegers( const QByteArray &data )
 {
     Q_UNUSED( data );
-    return QMap<QString, int>();
+    return QMap<QString, int>( );
 }
 
 QMap<QString, int> SerialDataManager::getMappedIntegers( )

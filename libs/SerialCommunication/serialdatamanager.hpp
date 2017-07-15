@@ -33,12 +33,19 @@ public:
     static QVector<QVector<QString>> getStringData( const QByteArray &data );
     QVector<QVector<QString>> getStringData( );
 
+    // Gets all the variable names
+    // Where each variable's name stops at the colon ( : )
+    static QStringList getVarNames ( const QByteArray &array );
+    QStringList getVarNames ( );
+    static QVector<double> getVarValues ( const QByteArray &array );
+    QVector<double> getVarValues ( );
+
     // In case our input has Titles for each Variable
     // e.g.
     // Gender 555 Sex 238\rGender 238 Sex 777
-    QMap<QString, int> getMappedIntegers( const QByteArray &data );
+    static QMap<QString, int> getMappedIntegers( const QByteArray &data );
     QMap<QString, int> getMappedIntegers( );
-    QMap<QString, double> getMappedDoubles( const QByteArray &data );
+    static QMap<QString, double> getMappedDoubles( const QByteArray &data );
     QMap<QString, double> getMappedDoubles( );
 
     QByteArray getData( ) const;
