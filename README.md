@@ -9,7 +9,7 @@
 </p>
 
 ----
-## What is it ?
+## <h1 align="center">What is it ?</h1>
 **Vide** is a **free** and **open-source** tool for **Serial Communication Reading** and **Data Visualization**. 
 
 Its purpose is to get _Input_ from a **Serial device** and generate an output for the **Plot Graphs** of the Application.
