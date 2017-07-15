@@ -17,7 +17,7 @@ Its purpose is to get _Input_ from a **Serial device** and generate an output fo
 
 For example:
 ### Input
-> varName1 552.23 varName2 23.202\r
+` varName1: 552.23 varName2: 23.202\r`
 ### Output
 **Vide** will grab each variable's name and value and create a **Variable object**. This **Variable object** can be displayed on a **Plot Graph** of the corresponding **Serial Port**.
 
