@@ -29,4 +29,20 @@ Something that could read many **Live Serial Data** and **Saved Data** simultane
 * - [ ] Can read many **Serial Ports** together
 * - [ ] Supports online/offline **Database Communication**
 ---------
+## How to use:
+
+**Simple AF:**
+**Serial Output** has to be in the following **format**:
+> {Variable Name}: {Double/Float Value} {Variable Name2:}: {Double/Float Value2} ....{CR/NL or both}
+
+### Example:
+> Microphone Input: 525.00 db: 20.00\n\rMicrophone Input: 763.00 db: 50.00\n\r
+
+### The rule here is:
+* You can insert as many variables you want ( unless they're too many )
+* Each **Variable** has a **name** and a **value**
+  * **Name**: 1. Can have spaces
+              1. Ends with an **unspaced** *colon*
+
+---------
 ### I hope this products gets the love it needs.
