@@ -144,6 +144,18 @@ QVector<double> SerialDataManager::getVarValues(const QByteArray &array)
     QVector<double> varValues;
     QVector<QVector<QString>> stringGroups = getStringData ( array );
 
+    foreach ( QVector<QString> group, stringGroups ) {
+        int index = 0; // Index of current string. Each string can be either a part of VarName or the VarValue itself
+        for ( int i = 0; i < variableCount; i++ ) {
+            // Getting to the point where the last word of Varname is
+            while ( !( group[ index ].endsWith(':') ) ) {
+                index++;
+            }
+            index++; // Getting to the varValue
+
+            varValues.append( group[index].toDouble() );
+        }
+    }
 
     return varValues;
 }

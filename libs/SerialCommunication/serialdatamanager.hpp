@@ -65,6 +65,7 @@ private:
     QByteArray carry; // Carries the last unfinished string (unfinshed = NotEndsWith( \n or \r ) )
 	QWidget *widget;
 
+    qint8 variableCount;
 
 };
 #endif // SERIALDATAMANAGER_H
