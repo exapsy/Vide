@@ -25,7 +25,7 @@ For example:
 ## All started when I couldn't find a software that fits my needs. 
 * The first one had to be bought after the trial and it didn't really worth it. It had a really big delay when it was reading live values, around 1 minute(!) and it needed an **external Arduino Library** to read the values. I wanted something simple, without the need of unnecessary external libraries, just a **quick serial output**.
 * The other one was just poor quality, unusable and much more complex. Why all these programs were so complex? All I wanted was to visualize some values that we got from the Serial Input!
-* Most of them couldn't support **Database Communication** and I'm about to make it possible via UDP One-Way connection
+* Most of them couldn't support **Database Communication** and I'm about to make it possible via UDP **Two-Way Binding Connection** 
 
 And they all were either pretty **complicated** and with **problems/bugs**. I wanted to make something simple that everyone could use and it would be great for a **High End** *AND* a **Low End** user. 
 
@@ -44,12 +44,23 @@ Something that could read many **Live Serial Data** and **Saved Data** simultane
 ---------
 ## How to use:
 
-**Simple AF:**
+### Settings:
+1. Choose the **total number** of **variables** you want to read
+1. Select the **Serial Port** you want to read if you want **Live Input**. (Not Available) Otherwise, select the **.csv File** you want to read.
+    * **Serial Output** has to be in the following format `{Variable Name1}: {Double Value1} {Variable Name2}: {Double Value2} ... {CR/NL or Both}`. (read **_Writing Serial Output_**).
+    * **.csv** File has to be in the following format `Milliseconds;Name;Value;`
+1. (**optional** - Not Available) If you're reading through a database then connect to the database and select the table you want to read.
+1. (**optional** - Not Available) If you're writing to a database then connect to the database and select the table you want to write to.
+
+### Writing Serial Output ? Simple AF:
+
+First you have to select the total number of variables there is on each {**CR\NL or both**}.
 
 **Serial Output** has to be in the following **format**:
 > {Variable Name}: {Double/Float Value} {Variable Name2:}: {Double/Float Value2} ....{CR/NL or both}
 
 ### Example:
+> **Variables:** [ **2** ]
 > Microphone Input: 525.00 db: 20.00\n\rMicrophone Input: 763.00 db: 50.00\n\r
 
 ### Vide's Intepretation:
