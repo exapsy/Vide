@@ -80,4 +80,4 @@ db | 50.00
 #### `For the sake of simplicity:` The rules above must be used strictly. They were made to be simple and comfortable to the user. But don't try to misuse them because `Vide` won't be able to handle any other Input. 
 
 ---------
-### I hope this products gets the love it needs.
+### I hope this product gets the love it needs.
