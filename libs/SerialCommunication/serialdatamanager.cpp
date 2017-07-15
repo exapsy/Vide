@@ -88,8 +88,8 @@ QVector<QVector<double> > SerialDataManager::getDoubleData( )
 QVector<QVector<QString> > SerialDataManager::getStringData( const QByteArray &data )
 {
     QVector<QVector<QString> > stringGroups;
-    // Anything that isn't digit, is taken away
-    QRegExp escapeChars( "([^\\n\\r])" );
+    // Anything that isn't letter, digit or space, is taken away
+    QRegExp escapeChars( "([\\000\\xFA-\\xFB\\uFFFF\\cI\\r\\0\\n])" );
     QStringList dataToString = QString( data ).split( escapeChars,
                                                       QString::SkipEmptyParts );
 
@@ -113,17 +113,15 @@ QVector<QVector<QString> > SerialDataManager::getStringData( )
 QMap<QString, double> SerialDataManager::getMappedDoubles( const QByteArray &data )
 {
     QMap<QString, double> mappedDoubles;
-    QStringList names;
-    QStringList stringDoubles;
-    QVector<double> doubles;
+    QVector<QVector<QString>> stringData = getStringData ( data );
 
-    Q_UNUSED( mappedDoubles );
-    Q_UNUSED( names );
-    Q_UNUSED( stringDoubles );
-    Q_UNUSED( doubles );
+    for ( QVector<QString> group : stringData ) {
+        for ( int i = 0; i < group.size(); i+=2 ) {
+            mappedDoubles[group[i]] = group[i+1].toDouble();
+        }
+    }
 
-    Q_UNUSED( data );
-    return QMap<QString, double>( );
+    return mappedDoubles;
 }
 
 QMap<QString, double> SerialDataManager::getMappedDoubles( )
