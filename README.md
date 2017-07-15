@@ -2,7 +2,7 @@
 -----
 
 <p align="center">
-    <a href="https://github.com/general656/Vide/blob/master/README.md#what-is-it"><b>What is it?</b></a> | 
+    <a href="https://github.com/general656/Vide/blob/master/README.md#what-is-it-"><b>What is it?</b></a> | 
     <a href="https://github.com/general656/Vide/blob/master/README.md#all-started-when-i-couldnt-find-a-software-that-fits-my-needs"><b>How did all start?</b></a> |
     <a href="https://github.com/general656/Vide/blob/master/README.md#abilities"><b>Abilities</b></a> |
     <a href="https://github.com/general656/Vide/blob/master/README.md#how-to-use"><b>How to use</b></a>
@@ -22,7 +22,7 @@ For example:
 
 ---------------
 
-## All started when I couldn't find a software that fits my needs. 
+## <h1 align="center">All started when I couldn't find a software that fits my needs.</h1>
 * The first one had to be bought after the trial and it didn't really worth it. It had a really big delay when it was reading live values, around 1 minute(!) and it needed an **external Arduino Library** to read the values. I wanted something simple, without the need of unnecessary external libraries, just a **quick serial output**.
 * The other one was just poor quality, unusable and much more complex. Why all these programs were so complex? All I wanted was to visualize some values that we got from the Serial Input!
 * Most of them couldn't support **Database Communication** and I'm about to make it possible via UDP **Two-Way Binding Connection** 
@@ -32,7 +32,7 @@ And they all were either pretty **complicated** and with **problems/bugs**. I wa
 Something that could read many **Live Serial Data** and **Saved Data** simultaneously and visualize them in the way you like.
 
 ---------
-## Abilities
+## <h1 align="center">Abilities</h1>
 
 * - [x] Can read Live Data
 * - [ ] Can read Saved **.csv** Data.
@@ -42,7 +42,7 @@ Something that could read many **Live Serial Data** and **Saved Data** simultane
 * - [ ] Supports online/offline **Database Communication**
 
 ---------
-## How to use:
+## <h1 align="center">How to use:</h1>
 
 ### Settings:
 1. Choose the **total number** of **variables** you want to read
