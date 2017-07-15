@@ -1,5 +1,5 @@
 # <h1 align="center">Vide</h1>
-###### A High End Software for High End users</span>
+###### A High End Data Visualization Software for High End users</span>
 -----
 
 <p align="center">
