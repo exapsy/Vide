@@ -1,6 +1,13 @@
 # Vide
 -----
-[**What is it?**]https://github.com/general656/Vide/blob/master/README.md#what-is-it [**How it Started?**]https://github.com/general656/Vide/blob/master/README.md#all-started-when-i-couldnt-find-a-software-that-fits-my-needs [**Abilities**]https://github.com/general656/Vide/blob/master/README.md#abilities [**How to use?**]https://github.com/general656/Vide/blob/master/README.md#how-to-use
+
+<p align="center">
+    <a href="https://github.com/general656/Vide/blob/master/README.md#what-is-it"><b>What is it?</b></a> | 
+    <a href="https://github.com/general656/Vide/blob/master/README.md#all-started-when-i-couldnt-find-a-software-that-fits-my-needs"><b>How it Started?</b></a> |
+    <a href="https://github.com/general656/Vide/blob/master/README.md#abilities"><b>Abilities</b></a> |
+    <a href="https://github.com/general656/Vide/blob/master/README.md#how-to-use"><b>How to use?</b></a>
+</p>
+
 ----
 ## What is it ?
 **Vide** is a **free** and **open-source** tool for **Serial Communication Reading** and **Data Visualization**. 
