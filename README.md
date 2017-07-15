@@ -1,4 +1,5 @@
-# Vide
+# Vide 
+###### A High End Software for High End users</span>
 -----
 
 <p align="center">
