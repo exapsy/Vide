@@ -46,6 +46,9 @@ MainWindow::~MainWindow( )
 
 void MainWindow::makePlot()
 {
+    ui->customPlot->legend->setVisible( true );
+    ui->customPlot->legend->setFont( QFont( "Helvetica", 9 ) );
+
     for ( int i = 0; i < 1023; i++ ) {
         (*graphX)[ i ] = i;
     }

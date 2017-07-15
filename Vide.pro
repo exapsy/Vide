@@ -19,11 +19,13 @@ SOURCES += main.cpp\
     libs/SerialCommunication/serialdatamanager.cpp \
     libs/SerialCommunication/serialportrecorder.cpp \
     libs/SerialCommunication/serialsettings.cpp \
+    libs/GraphPlot/plotmanager.cpp
 
 HEADERS  += mainwindow.h \
     libs/GraphPlot/qcustomplot.h \
     libs/SerialCommunication/serialdatamanager.hpp \
     libs/SerialCommunication/serialportrecorder.hpp \
-    libs/SerialCommunication/serialsettings.hpp
+    libs/SerialCommunication/serialsettings.hpp \
+    libs/GraphPlot/plotmanager.h
 
 FORMS    += mainwindow.ui

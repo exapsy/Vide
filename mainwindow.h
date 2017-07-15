@@ -8,6 +8,11 @@
 // Plotting
 #include "libs/GraphPlot/qcustomplot.h"
 
+#define PLOT_DEFAULT_COLOR QColor( 255, 41, 77 )
+#define PLOT_COLOR1 QColor( 68, 129, 77 )
+#define PLOT_COLOR2 QColor( 241, 196, 15 )
+#define PLOT_COLOR3 QColor( 22, 160, 133)
+
 namespace Ui {
 class MainWindow;
 }
