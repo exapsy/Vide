@@ -7,9 +7,6 @@
 #include "libs/SerialCommunication/serialdatamanager.hpp"
 // Plotting
 #include "libs/GraphPlot/qcustomplot.h"
-// Helping to the Plotting / Data Handling
-#include "libs/ContainerHandling/vectorhandling.hpp"
-
 
 namespace Ui {
 class MainWindow;

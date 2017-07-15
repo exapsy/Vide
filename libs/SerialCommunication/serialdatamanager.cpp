@@ -30,6 +30,16 @@ void SerialDataManager::readBytes()
     qDebug() << getMappedDoubles() << endl;
 }
 
+void SerialDataManager::setVariablesCount(const qint8 &value)
+{
+    variablesCount = value;
+}
+
+qint8 SerialDataManager::getVariablesCount() const
+{
+    return variablesCount;
+}
+
 // Pure Variables in Serial without Titles
 QVector<QVector<int> > SerialDataManager::getIntData( const QByteArray &data )
 {
@@ -108,26 +118,21 @@ QVector<QVector<QString> > SerialDataManager::getStringData( )
     return getStringData( this->data );
 }
 
-QStringList SerialDataManager::getVarNames(const QByteArray &array)
+QStringList SerialDataManager::getVarNames(const QByteArray &array, quint8 variableCount )
 {
     QStringList varNames;
-    int varIndex = 0;
     QVector<QVector<QString>> stringGroups = getStringData ( array );
 
     // For each Serial Input ( Input = Ends with '\r' )
     foreach ( QVector<QString> group, stringGroups ) {
-        // Passing through all the elements in the group
-        for ( int i = 0; i < group.size(); i++ ) {
-            // A varName is defined before a colon
-            // after the colon is located the Double value
-            if ( !( group[ i ].endsWith( ':' ) ) ) {
-                varNames[ varIndex ] += group[ i ];
+        int index = 0;
+        for ( int i = 0; i < variableCount; i++, index++ ) {
+            // Append all the strings before the final ( final = ends with a colon ':' )
+            while ( !group[ index ].endsWith(':') ) {
+                varNames.append( group[ index ] );
             }
-            else {
-                varNames[ varIndex ] += group[ i ];
-                varIndex++; // Next variable name to read
-                i++; // Bypassing the numerical (double) value on the right
-            }
+            varNames.append( group[ index ] ); // Append the string that ends with ':' as well
+            index++; // Avoid the VarValue next to it
         }
     }
 
@@ -136,17 +141,17 @@ QStringList SerialDataManager::getVarNames(const QByteArray &array)
 
 QStringList SerialDataManager::getVarNames()
 {
-    return getVarNames ( data );
+    return getVarNames ( data, variablesCount );
 }
 
-QVector<double> SerialDataManager::getVarValues(const QByteArray &array)
+QVector<double> SerialDataManager::getVarValues(const QByteArray &array, quint8 variablesCount )
 {
     QVector<double> varValues;
     QVector<QVector<QString>> stringGroups = getStringData ( array );
 
     foreach ( QVector<QString> group, stringGroups ) {
         int index = 0; // Index of current string. Each string can be either a part of VarName or the VarValue itself
-        for ( int i = 0; i < variableCount; i++ ) {
+        for ( int i = 0; i < variablesCount; i++ ) {
             // Getting to the point where the last word of Varname is
             while ( !( group[ index ].endsWith(':') ) ) {
                 index++;
@@ -162,16 +167,16 @@ QVector<double> SerialDataManager::getVarValues(const QByteArray &array)
 
 QVector<double> SerialDataManager::getVarValues()
 {
-    return getVarValues ( data );
+    return getVarValues ( data, variablesCount );
 }
 
 
 // Get mapped data
-QMap<QString, double> SerialDataManager::getMappedDoubles( const QByteArray &data )
+QMap<QString, double> SerialDataManager::getMappedDoubles( const QByteArray &data, quint8 variablesCount )
 {
     QMap<QString, double> mappedDoubles;
-    QStringList varNames = getVarNames( data );
-    QVector<double> varValues = getVarValues( data );
+    QStringList varNames = getVarNames( data, variablesCount );
+    QVector<double> varValues = getVarValues( data, variablesCount );
 
     // TODO: Search/Implement a better Exception throwing, something that gives the user a message
     if (varNames.size() != varValues.size() )
@@ -186,7 +191,7 @@ QMap<QString, double> SerialDataManager::getMappedDoubles( const QByteArray &dat
 
 QMap<QString, double> SerialDataManager::getMappedDoubles( )
 {
-    return getMappedDoubles( this->data );
+    return getMappedDoubles( this->data, variablesCount );
 }
 
 QMap<QString, int> SerialDataManager::getMappedIntegers( const QByteArray &data )

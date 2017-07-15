@@ -35,9 +35,9 @@ public:
 
     // Gets all the variable names
     // Where each variable's name stops at the colon ( : )
-    static QStringList getVarNames ( const QByteArray &array );
+    static QStringList getVarNames (const QByteArray &array , quint8 variableCount);
     QStringList getVarNames ( );
-    static QVector<double> getVarValues ( const QByteArray &array );
+    static QVector<double> getVarValues (const QByteArray &array , quint8 variablesCount);
     QVector<double> getVarValues ( );
 
     // In case our input has Titles for each Variable
@@ -45,14 +45,18 @@ public:
     // Gender 555 Sex 238\rGender 238 Sex 777
     static QMap<QString, int> getMappedIntegers( const QByteArray &data );
     QMap<QString, int> getMappedIntegers( );
-    static QMap<QString, double> getMappedDoubles( const QByteArray &data );
+    static QMap<QString, double> getMappedDoubles(const QByteArray &data , quint8 variablesCount);
     QMap<QString, double> getMappedDoubles( );
 
     QByteArray getData( ) const;
 
     void getUnfinishedValue( );
 
-    SerialPortRecorder *serialRecorder;
+    qint8 getVariablesCount() const;
+    void setVariablesCount(const qint8 &value);
+
+     SerialPortRecorder *serialRecorder;
+
 signals:
     void dataChanged( );
 
@@ -65,7 +69,7 @@ private:
     QByteArray carry; // Carries the last unfinished string (unfinshed = NotEndsWith( \n or \r ) )
 	QWidget *widget;
 
-    qint8 variableCount;
+    qint8 variablesCount;
 
 };
 #endif // SERIALDATAMANAGER_H
