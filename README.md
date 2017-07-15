@@ -54,14 +54,16 @@ Something that could read many **Live Serial Data** and **Saved Data** simultane
 
 ### Writing Serial Output ? Simple AF:
 
-First you have to select the total number of variables there is on each {**CR\NL or both**}.
-
 **Serial Output** has to be in the following **format**:
-> {Variable Name}: {Double/Float Value} {Variable Name2:}: {Double/Float Value2} ....{CR/NL or both}
+```
+{Variable Name}: {Double/Float Value} {Variable Name2:}: {Double/Float Value2} .... {CR/NL or both}
+```
 
 ### Example:
-> **Variables:** [ **2** ]
-> Microphone Input: 525.00 db: 20.00\n\rMicrophone Input: 763.00 db: 50.00\n\r
+```
+ Settings 🡺 Variables: [ 2 ]
+ Microphone Input: 525.00 db: 20.00\n\rMicrophone Input: 763.00 db: 50.00\n\r
+```
 
 ### Vide's Intepretation:
 ##### 1:
@@ -77,7 +79,7 @@ Microphone Input | 763.00
 db | 50.00
 
 ### The rule here is:
-* You can insert as many variables you want ( unless they're too many )
+* You can insert as many variables you want ( unless they're too many ). Technical size is 1 byte, so capable of holding 256 different variables.
 * Each **Variable** has a **name** and a **value**
   * **Name**: 
     1. Can have spaces
