@@ -1,5 +1,5 @@
 # <h1 align="center">Vide</h1>
-###### A High End Software for High End users</span>
+###### A High End Data Visualization Software for High End users</span>
 -----
 
 <p align="center">
@@ -17,9 +17,9 @@ Its purpose is to get _Input_ from a **Serial device** and generate an output fo
 
 For example:
 ### Input
-> varName1 552.23 varName2 23.202\r
+` varName1: 552.23 varName2: 23.202\r`
 ### Output
-**Vide** will grab each variable's name and value and create a **Variable object**. This **Variable object** can be displayed on a **Plot Graph** of the corresponding **Serial Port**.
+**Vide** will grab each variable's name and value and create a **Variable object**. This **Variable object** can be displayed on a **Plot Graph** of the corresponding **Input Port** (**Serial Port** or a **CSV** file).
 
 ---------------
 
