@@ -59,39 +59,39 @@ Something that could read many **Live Serial Data** and **Saved Data** simultane
 
 **Serial Output** has to be in the following **format**:
 ```
-{Variable Name}: {Double/Float Value} {Variable Name2:}: {Double/Float Value2} .... {CR/NL or both}
+{Variable Name}: {Double Value} {Variable Name2}: {Double Value2} .... {CR/NL or both}
 ```
 
-### Example:
+### ⟶ Example:
 ```
  Settings 🡺 Variables: [ 2 ]
  Microphone Input: 525.00 db: 20.00\n\rMicrophone Input: 763.00 db: 50.00\n\r
 ```
 
-### Vide's Intepretation:
-##### 1:
+##### Vide's Intepretation:
+###### 1:
 Variable Name | Variable Value |
 --------------|----------------|
 Microphone Input | 525.00
 db | 20.00
 
-##### 2:
+###### 2:
 Variable Name | Variable Value |
 --------------|----------------|
 Microphone Input | 763.00
 db | 50.00
 
 ### The rule here is:
-* You can insert as many variables you want ( unless they're too many ). Technical size is 1 byte, so capable of holding 256 different variables.
+* You can insert **as many variables** you want (unless they're too many). Technical size is **1 byte**, so capable of holding **256 different variables**.
 * Each **Variable** has a **name** and a **value**
   * **Name**: 
-    1. Can have spaces
+    1. Can have **spaces**
     1. Ends with an **unspaced** *colon* `// Microphone Input : << Error: Colon has space before`
     1. Next to it is always the **value**
   * **Value**:
     1. Is always next to **name**
     1. Should be a **double** value
-    1. Next to it is either another Variable with the same properties, or a {CR/NL or both}
+    1. Next to it is either another **Variable** with the same properties, or a {CR/NL or both}
 
 #### `For the sake of simplicity:` The rules above must be used strictly. They were made to be simple and comfortable to the user. But don't try to misuse them because `Vide` won't be able to handle any other Input. 
 
