@@ -25,8 +25,9 @@ For example:
 
 ## <h1 align="center">All started when I couldn't find a software that fits my needs.</h1>
 * The first one had to be bought after the trial and it didn't really worth it. It had a really big delay when it was reading live values, around 1 minute(!) and it needed an **external Arduino Library** to read the values. I wanted something simple, without the need of unnecessary external libraries, just a **quick serial output**.
-* The other one was just poor quality, unusable and much more complex. Why all these programs were so complex? All I wanted was to visualize some values that we got from the Serial Input!
-* Most of them couldn't support **Database Communication** and I'm about to make it possible via UDP **Two-Way Binding Connection** 
+* The other one was just poor quality, unusable and much more complex. Why all these programs were so complex? All I wanted was to visualize some values that we got from the Serial Input! I don't want to learn your damn API and program settings for such a simple job. Probably I wouldn't need your program for a long time, why would I have to learn everytime your API after I forget it? Don't make my life harder than it should be!
+* Most of them couldn't support **Database Communication** and I'm about to make it possible via UDP **Two-Way Binding Connection**.
+* **Bugs**,**Unsupported** & **Unstable** software.
 
 And they all were either pretty **complicated** and with **problems/bugs**. I wanted to make something simple that everyone could use and it would be great for a **High End** *AND* a **Low End** user. 
 
