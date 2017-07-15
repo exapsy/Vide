@@ -107,9 +107,9 @@ void MainWindow::serialButtonClosed( ) {
 }
 
 void MainWindow::updateGraph() {
-    QVector<QVector<int>> updateData = serialData->getIntData();
+    QMap<QString, double> updateData = serialData->getMappedDoubles();
 
-    for ( int i = 0; i < updateData.size(); i++ ) {
+    for ( int i = 0; i < updateData.count(); i++ ) {
         if (graphY->size() == 1023 )
             graphY->pop_back();
         if ( updateData[i].size() > 0 ) {
