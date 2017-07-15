@@ -56,7 +56,9 @@ void MainWindow::makePlot()
         (*graphY)[ i ] = 0;
     }
 
+    for ( int i = 0; i < serialData->getVariablesCount(); i++ ) {
 
+    }
     graph1 = ui->customPlot->addGraph();
     graph1->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, QPen(Qt::black, 1.5), QBrush(Qt::white), 5));
     graph1->setPen(QPen(QColor(120, 120, 120), 2));

@@ -172,9 +172,9 @@ QVector<double> SerialDataManager::getVarValues()
 
 
 // Get mapped data
-QMap<QString, double> SerialDataManager::getMappedDoubles( const QByteArray &data, quint8 variablesCount )
+QVector<QMap<QString, double>> SerialDataManager::getMappedDoubles( const QByteArray &data, quint8 variablesCount )
 {
-    QMap<QString, double> mappedDoubles;
+    QVector<QMap<QString, double>> mappedDoubles;
     QStringList varNames = getVarNames( data, variablesCount );
     QVector<double> varValues = getVarValues( data, variablesCount );
 
@@ -183,13 +183,17 @@ QMap<QString, double> SerialDataManager::getMappedDoubles( const QByteArray &dat
         throw new QException( );
 
     for ( int i = 0; i < varNames.size(); i++ ) {
-        mappedDoubles[ varNames[ i ] ] = varValues[ i ];
+        QMap<QString, double> map;
+        for ( int j = 0; j < variablesCount; j++, i++) {
+            map[ varNames[ i ] ] = varValues[ i ];
+        }
+        mappedDoubles.append( map );
     }
 
     return mappedDoubles;
 }
 
-QMap<QString, double> SerialDataManager::getMappedDoubles( )
+QVector<QMap<QString, double> > SerialDataManager::getMappedDoubles( )
 {
     return getMappedDoubles( this->data, variablesCount );
 }

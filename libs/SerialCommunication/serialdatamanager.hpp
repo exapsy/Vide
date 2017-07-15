@@ -45,8 +45,8 @@ public:
     // Gender 555 Sex 238\rGender 238 Sex 777
     static QMap<QString, int> getMappedIntegers( const QByteArray &data );
     QMap<QString, int> getMappedIntegers( );
-    static QMap<QString, double> getMappedDoubles(const QByteArray &data , quint8 variablesCount);
-    QMap<QString, double> getMappedDoubles( );
+    static QVector<QMap<QString, double>> getMappedDoubles(const QByteArray &data , quint8 variablesCount);
+    QVector<QMap<QString, double>> getMappedDoubles( );
 
     QByteArray getData( ) const;
 
