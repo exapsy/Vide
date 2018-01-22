@@ -1,33 +1,17 @@
-#-------------------------------------------------
-#
-# Project created by QtCreator 2017-07-04T12:19:41
-#
-#-------------------------------------------------
+QT += qml quick serialport
 
-QT       += core gui serialport
+CONFIG += c++11
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
+SOURCES += main.cpp \
+    src/services/Serial/serialportmanager.cpp
 
-TARGET = Vide
-TEMPLATE = app
+RESOURCES += qml.qrc
 
-CONFIG += debug
+# Additional import path used to resolve QML modules in Qt Creator's code model
+QML_IMPORT_PATH =
 
-SOURCES += main.cpp\
-        mainwindow.cpp \
-    libs/GraphPlot/qcustomplot.cpp \
-    libs/SerialCommunication/serialdatamanager.cpp \
-    libs/SerialCommunication/serialportrecorder.cpp \
-    libs/SerialCommunication/serialsettings.cpp \
-    libs/GraphPlot/plotmanager.cpp \
-    libs/plotvariable.cpp
+# Default rules for deployment.
+include(deployment.pri)
 
-HEADERS  += mainwindow.h \
-    libs/GraphPlot/qcustomplot.h \
-    libs/SerialCommunication/serialdatamanager.hpp \
-    libs/SerialCommunication/serialportrecorder.hpp \
-    libs/SerialCommunication/serialsettings.hpp \
-    libs/GraphPlot/plotmanager.h \
-    libs/plotvariable.h
-
-FORMS    += mainwindow.ui
+HEADERS += \
+    src/services/Serial/serialportmanager.hpp
