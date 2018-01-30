@@ -26,9 +26,9 @@ Flickable {
         anchors.right: parent.right
 
         header: "PORT NAME"
-        currentIndex: 0
+        currentComboIndex: 0
         model: serialPortManager.availablePorts()
-        onCurrentIndexChanged: {
+        onCurrentComboIndexChanged: {
             comboBoxChanged()
         }
     }
@@ -41,9 +41,9 @@ Flickable {
         anchors.right: parent.right
 
         header: "BAUD RATE"
-        currentIndex: 12
+        currentComboIndex: 12
         model: serialPortManager.availableBaudRates()
-        onCurrentIndexChanged: {
+        onCurrentComboIndexChanged: {
             comboBoxChanged()
         }
     }
@@ -56,9 +56,9 @@ Flickable {
         anchors.right: parent.right
 
         header: "DATA BITS"
-        currentIndex: 3
+        currentComboIndex: 3
         model: ["5", "6", "7", "8"]
-        onCurrentIndexChanged: {
+        onCurrentComboIndexChanged: {
             comboBoxChanged()
         }
     }
@@ -71,9 +71,9 @@ Flickable {
         anchors.right: parent.right
 
         header: "PARITY"
-        currentIndex: 0
+        currentComboIndex: 0
         model: ["No Parity", "Even", "Odd", "Space", "Mark"]
-        onCurrentIndexChanged: {
+        onCurrentComboIndexChanged: {
             comboBoxChanged()
         }
     }
@@ -86,9 +86,9 @@ Flickable {
         anchors.right: parent.right
 
         header: "STOP BITS"
-        currentIndex: 0
-        model: ["One Stop", "Two Stop", "One and a Half Stop"]
-        onCurrentIndexChanged: {
+        currentComboIndex: 0
+        model: ["1",  "2", "1.5"]
+        onCurrentComboIndexChanged: {
             comboBoxChanged()
         }
     }
@@ -101,9 +101,9 @@ Flickable {
         anchors.right: parent.right
 
         header: "FLOW CONTROL"
-        model: ["Hardware Control", "Software Control", "No Flow Control"]
-        currentIndex: 2
-        onCurrentIndexChanged: {
+        model: ["No Flow Control", "Hardware Control", "Software Control"]
+        currentComboIndex: 2
+        onCurrentComboIndexChanged: {
             comboBoxChanged()
         }
     }
@@ -123,6 +123,7 @@ Flickable {
             } else {
                 serialPortManager.closeSerialPort();
             }
+            connected = !connected;
         }
 
         SerialPortManager {
@@ -134,18 +135,16 @@ Flickable {
             onDisconnected: {
                 startButton.text = "START"
             }
-            onDataRead: {
-                console.log(lastBytesRead)
-            }
         }
 
     }
     onComboBoxChanged: {
-        serialPortManager.updateSettings(portNameComboBox.model[portNameComboBox.currentIndex],
-                                         baudRateComboBox.currentIndex+1,
-                                         dataBitsComboBox.currentIndex+1,
-                                         parityComboBox.currentIndex+1,
-                                         stopBitsComboBox.currentIndex+1,
-                                         flowControlComboBox.currentIndex+1)
+        console.log("Settings Changed");
+        serialPortManager.updateSettings(portNameComboBox.model[portNameComboBox.currentComboIndex],
+                                         baudRateComboBox.model[baudRateComboBox.currentComboIndex],
+                                         dataBitsComboBox.model[dataBitsComboBox.currentComboIndex],
+                                         parityComboBox.currentComboIndex+1 == 1 ? 0 : parityComboBox.currentComboIndex+1,
+                                         stopBitsComboBox.currentComboIndex + 1,
+                                         flowControlComboBox.currentComboIndex)
     }
 }

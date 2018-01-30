@@ -14,8 +14,8 @@ Item {
 
     height: text.height + comboBox.height
     property int count: comboBox.count
-    property int currentIndex: comboBox.currentIndex
-    property string currentText: comboBox.currentText
+    property int currentComboIndex
+    property string currentComboText
     property bool hovered: comboBox.hovered
     property bool pressed: comboBox.pressed
 
@@ -38,8 +38,15 @@ Item {
         anchors.top: text.bottom
         anchors.right: parent.right
         anchors.left: parent.left
-        currentIndex: root.currentIndex
 
         model: root.model
+
+        onCurrentIndexChanged: {
+            root.currentComboIndex = currentIndex
+            root.currentComboText = currentText
+            console.log(model[currentIndex])
+            console.log(currentIndex)
+
+        }
     }
 }
