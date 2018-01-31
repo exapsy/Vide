@@ -21,7 +21,7 @@ QT_END_NAMESPACE
 class SerialPortManager : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QByteArray lastBytesRead READ lastBytesRead NOTIFY dataRead)
+    Q_PROPERTY(QString lastBytesRead READ lastBytesRead NOTIFY dataRead)
 
 public:
     struct SerialSettings {
@@ -42,9 +42,10 @@ public:
     ~SerialPortManager();
 
     struct SerialSettings currentSettings() const;
-    QByteArray lastBytesRead() const;
+    QString lastBytesRead() const;
     Q_INVOKABLE QVariant availablePorts();
     Q_INVOKABLE QVariant availableBaudRates();
+    Q_INVOKABLE QString getLastBytesRead();
 
 
 signals:
@@ -52,9 +53,12 @@ signals:
 public slots:
     Q_INVOKABLE void openSerialPort();
     Q_INVOKABLE void closeSerialPort();
-//    void setSettings(QString portName);
-    Q_INVOKABLE void readData();
     Q_INVOKABLE void updateSettings(QString portName, QString baudRate, QString dataBits, qint32  parity, qint32 stopBits, qint32 flowControl);
+
+private slots:
+    Q_INVOKABLE void readData();
+
+    /* ONLY FOR DEBUGGING - DELETE AFTER STABLE */
     void logData();
 
 signals:
@@ -65,7 +69,7 @@ signals:
 private:
     QSerialPort *m_serial;
     struct SerialSettings m_currentSettings;
-    QByteArray *m_lastBytesRead;
+    QString m_lastBytesRead;
 };
 
 #endif // SERIALPORTMANAGER_HPP

@@ -1,6 +1,7 @@
 import QtQuick 2.7
 
 import "../Styles"
+import "../UI"
 
 Item {
     anchors.top: parent.top
@@ -26,6 +27,16 @@ Item {
             height: 200
 
             color: ThemeManager.primaryColor
+
+            Terminal {
+                id: terminal
+                anchors.top: tabs.top
+                anchors.bottom: tabs.bottom
+                anchors.left: tabs.left
+                anchors.right: tabs.right
+
+                anchors.bottomMargin: 11
+            }
         }
 
         Rectangle {

@@ -38,6 +38,7 @@ Item {
         anchors.top: text.bottom
         anchors.right: parent.right
         anchors.left: parent.left
+        currentIndex: root.currentComboIndex
 
         model: root.model
 

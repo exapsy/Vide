@@ -12,7 +12,7 @@ Window {
     visible: true
     width: 1080
     height: 600
-    visibility: "Maximized"
+//    visibility: "Maximized"
     title: qsTr("Vide")
     color: ThemeManager.backgroundColor
     minimumWidth: 1024

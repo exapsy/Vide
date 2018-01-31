@@ -1,7 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>src/client/GraphPlot/Graph.qml</file>
         <file>src/client/Styles/ThemeManager.qml</file>
         <file>src/client/Styles/qmldir</file>
         <file>src/client/TopBar/TopBar.qml</file>
@@ -11,5 +10,7 @@
         <file>src/client/SideBar/Tools/SerialPortManager/SerialPortManager.qml</file>
         <file>src/client/UI/VideButton.qml</file>
         <file>src/client/UI/VideComboBox.qml</file>
+        <file>src/client/UI/Terminal.qml</file>
+        <file>src/client/ChartContent/ChartContent.qml</file>
     </qresource>
 </RCC>

@@ -3,9 +3,9 @@
 
 SerialPortManager::SerialPortManager(QObject *parent) : QObject(parent) {
     m_serial = new QSerialPort(this);
-    m_lastBytesRead = new QByteArray();
 
-    connect(m_serial, &QSerialPort::readyRead, this, &SerialPortManager::logData);
+    connect(m_serial, &QSerialPort::readyRead, this, &SerialPortManager::readData);
+    connect(this, &SerialPortManager::dataRead, this, &SerialPortManager::logData);
 }
 
 SerialPortManager::~SerialPortManager() {
@@ -44,6 +44,7 @@ void SerialPortManager::closeSerialPort() {
         emit disconnected();
     }
 }
+
 QVariant SerialPortManager::availablePorts() {
         QList<QSerialPortInfo> portsAvailable = QSerialPortInfo::availablePorts();
         QStringList names_PortsAvailable;
@@ -62,33 +63,16 @@ QVariant SerialPortManager::availableBaudRates() {
     return QVariant::fromValue(string_baudRates);
 }
 
-//void SerialPortManager::setSettings(QString portName)
-//{
-//    m_currentSettings.name = portName;
-//    m_currentSettings.stringBaudRate = baudRate;
-//    m_currentSettings.stringDataBits = dataBits;
-//    m_currentSettings.stringParity = parity;
-//    m_currentSettings.stringStopBits = stopBits;
-//    m_currentSettings.stringFlowControl = flowControl;
-
-//    m_currentSettings.baudRate = baudRate;
-//    m_currentSettings.dataBits =  dataBits;
-//    m_currentSettings.parity = parity;
-//    m_currentSettings.stopBits = stopBits;
-//    m_currentSettings.flowControl = flowControl;
-
-//    emit settingsChanged();
-//}
+QString SerialPortManager::getLastBytesRead() {
+        QString lastBytesRead = m_lastBytesRead;
+        m_lastBytesRead.clear();
+        return lastBytesRead;
+}
 
 void SerialPortManager::readData() {
-    *m_lastBytesRead = m_serial->readAll();
+    QByteArray serialData = m_serial->readAll();
+    m_lastBytesRead.append(serialData);
     emit dataRead();
-//    QByteArray::iterator iter = m_lastBytesRead->begin();
-//    while (iter != m_lastBytesRead->end() ) {
-//        qDebug() << QChar(*iter);
-//        iter++;
-//    }
-    //    qDebug() << "\n";
 }
 
 
@@ -110,15 +94,16 @@ void SerialPortManager::updateSettings(QString portName, QString baudRate, QStri
     m_currentSettings.flowControl = static_cast<QSerialPort::FlowControl>(flowControl);
 }
 
+/* ONLY FOR DEBUGGING - DELETE AFTER STABLE */
 void SerialPortManager::logData() {
-    *m_lastBytesRead = m_serial->readAll();
-    qDebug() << *m_lastBytesRead;
+    QDebug deb = qDebug();
+    deb.noquote() << getLastBytesRead().replace("\n", "").replace("\r", "");
 }
 
 SerialPortManager::SerialSettings SerialPortManager::currentSettings() const {
     return m_currentSettings;
 }
 
-QByteArray SerialPortManager::lastBytesRead() const {
-    return *m_lastBytesRead;
+QString SerialPortManager::lastBytesRead() const {
+    return m_lastBytesRead;
 }

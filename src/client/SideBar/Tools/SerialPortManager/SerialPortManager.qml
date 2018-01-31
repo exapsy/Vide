@@ -102,7 +102,7 @@ Flickable {
 
         header: "FLOW CONTROL"
         model: ["No Flow Control", "Hardware Control", "Software Control"]
-        currentComboIndex: 2
+        currentComboIndex: 1
         onCurrentComboIndexChanged: {
             comboBoxChanged()
         }
@@ -130,16 +130,25 @@ Flickable {
             id: serialPortManager
             onConnected: {
                 startButton.text = "STOP"
-                readData();
             }
             onDisconnected: {
                 startButton.text = "START"
+            }
+            onDataRead: {
+                terminal.input= getLastBytesRead()
             }
         }
 
     }
     onComboBoxChanged: {
-        console.log("Settings Changed");
+        serialPortManager.updateSettings(portNameComboBox.model[portNameComboBox.currentComboIndex],
+                                         baudRateComboBox.model[baudRateComboBox.currentComboIndex],
+                                         dataBitsComboBox.model[dataBitsComboBox.currentComboIndex],
+                                         parityComboBox.currentComboIndex+1 == 1 ? 0 : parityComboBox.currentComboIndex+1,
+                                         stopBitsComboBox.currentComboIndex + 1,
+                                         flowControlComboBox.currentComboIndex)
+    }
+    Component.onCompleted: {
         serialPortManager.updateSettings(portNameComboBox.model[portNameComboBox.currentComboIndex],
                                          baudRateComboBox.model[baudRateComboBox.currentComboIndex],
                                          dataBitsComboBox.model[dataBitsComboBox.currentComboIndex],

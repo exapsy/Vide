@@ -1,11 +1,12 @@
-#include <QGuiApplication>
+#include <QApplication>
 #include <QQmlApplicationEngine>
-#include "./src/services/Serial/serialportmanager.hpp"
+ #include "./src/services/Serial/serialportmanager.hpp"
+
 
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-    QGuiApplication app(argc, argv);
+    QApplication app(argc, argv);
 
     qmlRegisterType<SerialPortManager>("com.Vide.qml", 1, 0, "SerialPortManager");
 

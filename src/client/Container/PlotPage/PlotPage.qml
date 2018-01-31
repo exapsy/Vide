@@ -1,6 +1,11 @@
-import QtQuick 2.7
+import QtQuick 2.9
+import QtQml 2.2
+import QtCharts 2.0
+
 import "../../Styles"
-import "../../GraphPlot"
+import "../../ChartContent"
+
+
 
 Item {
     anchors.top: parent.top
@@ -16,7 +21,11 @@ Item {
 
         color: "transparent"
 
-        Graph {
+        ChartContent {
+            id: chart
+        }
+
+        Component.onCompleted: {
 
         }
     }
