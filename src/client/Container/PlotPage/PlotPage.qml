@@ -26,7 +26,8 @@ Item {
         }
 
         Component.onCompleted: {
-
+            chart.update()
+            chart.setAxisX()
         }
     }
 }
